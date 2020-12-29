@@ -18,6 +18,8 @@ p {
    font-family: 'Courier New', Courier, monospace;
    color:white;
    font-size:30px;
+   margin-bottom:0px;
+   margin-top:40px;
 }
 
 h1 {
@@ -28,4 +30,16 @@ h1 {
 
 a {
    color: #AE81FF;
+}
+
+li {
+   font-family: 'Courier New', Courier, monospace;
+   color:white;
+   font-size:30px;
+   padding-left:10px;
+}
+
+ul {
+   margin-top: 0px;
+   margin-left:20px;
 }
