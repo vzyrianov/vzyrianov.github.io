@@ -1,0 +1,341 @@
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>LiDARGen</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <base href="/"> -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h2 class="col-md-12 text-center">
+                Learning to Generate Realistic LiDAR Point Clouds 
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a href="https://www.zyrianov.org/" target="_blank" rel="noopener noreferrer">
+                          Vlas Zyrianov \(^{1}\)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" target="_blank" rel="noopener noreferrer">
+                            Xiyue Zhu \(^{1}\)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://shenlong.web.illinois.edu/" target="_blank" rel="noopener noreferrer">
+                            Shenlong Wang \(^{1}\)
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        \(^1\) University of Illinois at Urbana-Champaign
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--
+        <div class="row">
+            <div class="col-md-12 text-center">
+                \(^*\) Equal Contribution
+            </div>
+        </div> -->
+        <div class="row">
+            <h2 class="col-md-12 text-center">
+                <small>
+                    ECCV 2022
+                </small>
+            </h2>
+        </div>
+
+        <div class="row">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <ul class="nav nav-pills nav-justified"><!--
+                        <li>
+                            <a href="https://arxiv.org/abs/2204.13696" target="_blank" rel="noopener noreferrer">
+                            <image src="img/neurmips_paper_cover.png" height="60px">
+                                <h4><strong>Paper</strong></h4>
+                            </a>
+                        </li>-->
+                        <!--
+                        <li>
+                            <a href="https://youtu.be/PV1dCTWL5Oo" target="_blank" rel="noopener noreferrer">
+                            <image src="img/youtube_icon.png" height="60px">
+                                <h4><strong>Video</strong></h4>
+                            </a>
+                        </li>
+                      -->
+                      <!--
+                        <li>
+                            <a href="https://github.com/zhihao-lin/neurmips" target="_blank" rel="noopener noreferrer">
+                            <image src="img/github.png" height="60px">
+                                <h4><strong>Code</strong></h4>
+                            </a>
+                        </li>
+                    -->
+                    </ul>
+                </div>
+        </div>
+
+        <!-- Abstract, Overview figure-->
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <image src="img/teaser.png" class="img-responsive" alt="overview"><br>
+                <h3>
+                    Abstract
+                </h3>
+                <p class="text-justify">
+                  We present <b>LiDARGen</b>, a novel, effective, and controllable generative model that produces realistic LiDAR point cloud sensory readings. Our method leverages the powerful score-matching energy-based model and formulates the point cloud generation process as a stochastic denoising process in the equirectangular view. This model allows us to sample diverse and high-quality point cloud samples with guaranteed physical feasibility and controllability. We validate the effectiveness of our method on the challenging KITTI-360 and NuScenes datasets. The quantitative and qualitative results show that our approach produces more realistic samples than other generative models. Furthermore, LiDARGen can sample point clouds conditioned on inputs without retraining. We demonstrate that our proposed generative model could be directly used to densify LiDAR point clouds.
+                </p>
+                <image src="img/method.png" class="img-responsive" alt="overview"><br>
+            </div>
+        </div>
+
+        <!-- Video -->
+        <!--
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Video
+                </h3>
+                <div class="text-center">
+                    <div style="position:relative;padding-top:56.25%;">
+                        <iframe src="https://www.youtube.com/embed/PV1dCTWL5Oo" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+      -->
+        
+        <!-- Results -->
+        <!--
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Results: Tanks&Temple
+                </h3>
+                <p class="text-justify">
+                    The videos qualitatively compare NeurMips with <a href="https://github.com/creiser/kilonerf" target="_blank" rel="noopener noreferrer">KiloNeRF</a>.
+                </p>                
+                <div class="col-md-4 text-center">
+                    <ul class="nav nav-pills nav-justified">
+                        <li>
+                            <a href="https://youtu.be/lWXts-ElmYo" target="_blank" rel="noopener noreferrer">
+                            <image src="img/tat/barn.png" height="200px">
+                                <h4><strong>Barn</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://youtu.be/lJl9W-i1s-I" target="_blank" rel="noopener noreferrer">
+                            <image src="img/tat/caterpillar.png" height="200px">
+                                <h4><strong>Caterpillar</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://youtu.be/zCscuDwHN4s" target="_blank" rel="noopener noreferrer">
+                            <image src="img/tat/family.png" height="200px">
+                                <h4><strong>Family</strong></h4>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a href="https://youtu.be/znsi9Spt7bY" target="_blank" rel="noopener noreferrer">
+                            <image src="img/tat/ignatius.png" height="200px">
+                                <h4><strong>Ignatius</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://youtu.be/8_bLNh_Wwg0" target="_blank" rel="noopener noreferrer">
+                            <image src="img/tat/truck.png" height="200px">
+                                <h4><strong>Truck</strong></h4>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="video-tat">
+                    <iframe src="https://www.youtube.com/embed/lWXts-ElmYo?playlist=lWXts-ElmYo&loop=1&autoplay=0&mute=1" allowfullscreen width="100%" height="100%"></iframe>
+                </div>
+                <div class="video-tat">
+                    <iframe src="https://www.youtube.com/embed/lJl9W-i1s-I?playlist=lJl9W-i1s-I&loop=1&autoplay=0&mute=1" allowfullscreen width="100%" height="100%"></iframe>
+                </div>
+                <div class="video-tat">
+                    <iframe src="https://www.youtube.com/embed/zCscuDwHN4s?playlist=zCscuDwHN4s&loop=1&autoplay=0&mute=1" allowfullscreen width="100%" height="100%"></iframe>
+                </div>
+                <div class="video-tat">
+                    <iframe src="https://www.youtube.com/embed/znsi9Spt7bY?playlist=znsi9Spt7bY&loop=1&autoplay=0&mute=1" allowfullscreen width="100%" height="100%"></iframe>
+                </div>
+                <div class="video-tat">
+                    <iframe src="https://www.youtube.com/embed/8_bLNh_Wwg0?playlist=8_bLNh_Wwg0&loop=1&autoplay=0&mute=1" allowfullscreen width="100%" height="100%"></iframe>
+                </div>
+
+            </div>
+        </div>
+        -->
+        <!--
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Results: Replica
+                </h3>
+                <p class="text-justify">
+                    The videos qualitatively compare NeurMips with <a href="https://github.com/facebookresearch/pytorch3d/tree/main/projects/nerf" target="_blank" rel="noopener noreferrer">NeRF</a> (PyTorch3D implementation) and <a href="https://nex-mpi.github.io/" target="_blank" rel="noopener noreferrer">NeX</a>, which are volume rendering method and multi-plane image (MPI) respectively.
+                </p>
+                <br>
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <ul class="nav nav-pills nav-justified">
+                            <li>
+                                <a href="https://youtu.be/RO6g-9pA0rs" target="_blank" rel="noopener noreferrer">
+                                <image src="img/replica/replica-apartment0.jpg" height="150px">
+                                    <h4><strong>Apartment 0</strong></h4>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://youtu.be/QGGRkbwnM44" target="_blank" rel="noopener noreferrer">
+                                <image src="img/replica/replica-apartment1.jpg" height="150px">
+                                    <h4><strong>Apartment 1</strong></h4>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://youtu.be/eGlpLuT-1f8" target="_blank" rel="noopener noreferrer">
+                                <image src="img/replica/replica-apartment2.jpg" height="150px">
+                                    <h4><strong>Apartment 2</strong></h4>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://youtu.be/6jIc0f0eOfk" target="_blank" rel="noopener noreferrer">
+                                <image src="img/replica/replica-frl0.jpg" height="150px">
+                                    <h4><strong>FRL 0</strong></h4>
+                                </a>
+                            </li>
+                            <br>
+                            <li>
+                                <a href="https://youtu.be/GqMEzrauJkE" target="_blank" rel="noopener noreferrer">
+                                <image src="img/replica/replica-kitchen.jpg" height="150px">
+                                    <h4><strong>Kitchen</strong></h4>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://youtu.be/zZ-1nrIK_l8" target="_blank" rel="noopener noreferrer">
+                                <image src="img/replica/replica-room0.jpg" height="150px">
+                                    <h4><strong>Room 0</strong></h4>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://youtu.be/4k_3FGSFdMA" target="_blank" rel="noopener noreferrer">
+                                <image src="img/replica/replica-room2.jpg" height="150px">
+                                    <h4><strong>Room 2</strong></h4>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="video-replica">
+                    <iframe src="https://www.youtube.com/embed/RO6g-9pA0rs?playlist=RO6g-9pA0rs&loop=1&autoplay=0&mute=1" allowfullscreen width="100%" height="100%"></iframe>
+                </div>
+                <div class="video-replica">
+                    <iframe src="https://www.youtube.com/embed/QGGRkbwnM44?playlist=QGGRkbwnM44&loop=1&autoplay=0&mute=1" allowfullscreen width="100%" height="100%"></iframe>
+                </div>
+                <div class="video-replica">
+                    <iframe src="https://www.youtube.com/embed/eGlpLuT-1f8?playlist=eGlpLuT-1f8&loop=1&autoplay=0&mute=1" allowfullscreen width="100%" height="100%"></iframe>
+                </div>
+                <div class="video-replica">
+                    <iframe src="https://www.youtube.com/embed/6jIc0f0eOfk?playlist=6jIc0f0eOfk&loop=1&autoplay=0&mute=1" allowfullscreen width="100%" height="100%"></iframe>
+                </div>
+                <div class="video-replica">
+                    <iframe src="https://www.youtube.com/embed/GqMEzrauJkE?playlist=GqMEzrauJkE&loop=1&autoplay=0&mute=1" allowfullscreen width="100%" height="100%"></iframe>
+                </div>
+                <div class="video-replica">
+                    <iframe src="https://www.youtube.com/embed/zZ-1nrIK_l8?playlist=zZ-1nrIK_l8&loop=1&autoplay=0&mute=1" allowfullscreen width="100%" height="100%"></iframe>
+                </div>
+                <div class="video-replica">
+                    <iframe src="https://www.youtube.com/embed/4k_3FGSFdMA?playlist=4k_3FGSFdMA&loop=1&autoplay=0&mute=1" allowfullscreen width="100%" height="100%"></iframe>
+                </div>
+            </div>
+        </div>
+        -->
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Related links
+                </h3>
+                <p class="text-justify">
+                    LiDARGen is implemented on top of the codebase of <a href="https://github.com/ermongroup/ncsnv2" target="_blank" rel="noopener noreferrer">NCSNv2</a>.
+                </p>
+               
+            </div>
+        </div>
+        
+            
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Citation
+                </h3>
+                <div class="form-group col-md-10 col-md-offset-1">
+                    <textarea id="bibtex" class="form-control" readonly>
+@InProceedings{zyrianov2022lidargen,
+author = {Zyrianov, Vlas and Zhu, Xiyue and Wang, Shenlong},
+title = {Learning to Generate Realistic LiDAR Point Clouds },
+booktitle = {Proceedings of the European Conference on Computer Vision (ECCV)},
+month = {October},
+year = {2022}
+}
+                    </textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Acknowledgements
+                </h3>
+                <p class="text-justify">
+We thank Wei-Chiu Ma and Zhijian Liu for their feedback on early drafts and all the participants in the human perceptual quality study. The project is partially funded by the Illinois Smart Transportation Initiative STII-21-07. We also thank Nvidia for the Academic Hardware Grant.
+
+
+                    <br>
+                    The website template was borrowed from <a href="http://mgharbi.com/" target="_blank" rel="noopener noreferrer">Michaël Gharbi</a> and <a href="https://zhihao-lin.github.io/neurmips/" target="_blank" rel="Noopener noreferrer">NeurMips</a>.
+                    <br>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
