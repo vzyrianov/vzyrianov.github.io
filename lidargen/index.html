@@ -1,0 +1,243 @@
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>LiDARGen</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <base href="/"> -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h2 class="col-md-12 text-center">
+                Learning to Generate Realistic LiDAR Point Clouds 
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a href="https://www.zyrianov.org/" target="_blank" rel="noopener noreferrer">
+                          Vlas Zyrianov \(^{1}\)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" target="_blank" rel="noopener noreferrer">
+                            Xiyue Zhu \(^{1}\)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://shenlong.web.illinois.edu/" target="_blank" rel="noopener noreferrer">
+                            Shenlong Wang \(^{1}\)
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        \(^1\) University of Illinois at Urbana-Champaign
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--
+        <div class="row">
+            <div class="col-md-12 text-center">
+                \(^*\) Equal Contribution
+            </div>
+        </div> -->
+        <div class="row">
+            <h2 class="col-md-12 text-center">
+                <small>
+                    ECCV 2022
+                </small>
+            </h2>
+        </div>
+
+        <div class="row">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <ul class="nav nav-pills nav-justified"><!--
+                        <li>
+                            <a href="https://arxiv.org/abs/2204.13696" target="_blank" rel="noopener noreferrer">
+                            <image src="img/neurmips_paper_cover.png" height="60px">
+                                <h4><strong>Paper</strong></h4>
+                            </a>
+                        </li>-->
+                        <!--
+                        <li>
+                            <a href="https://youtu.be/PV1dCTWL5Oo" target="_blank" rel="noopener noreferrer">
+                            <image src="img/youtube_icon.png" height="60px">
+                                <h4><strong>Video</strong></h4>
+                            </a>
+                        </li>
+                      -->
+                      <!--
+                        <li>
+                            <a href="https://github.com/zhihao-lin/neurmips" target="_blank" rel="noopener noreferrer">
+                            <image src="img/github.png" height="60px">
+                                <h4><strong>Code</strong></h4>
+                            </a>
+                        </li>
+                    -->
+                    </ul>
+                </div>
+        </div>
+
+        <!-- Abstract, Overview figure-->
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <image src="img/teaser.png" class="img-responsive" alt="overview"><br>
+                <h3>
+                    Abstract
+                </h3>
+                <p class="text-justify">
+                  We present <b>LiDARGen</b>, a novel, effective, and controllable generative model that produces realistic LiDAR point cloud sensory readings. Our method leverages the powerful score-matching energy-based model and formulates the point cloud generation process as a stochastic denoising process in the equirectangular view. This model allows us to sample diverse and high-quality point cloud samples with guaranteed physical feasibility and controllability. We validate the effectiveness of our method on the challenging KITTI-360 and NuScenes datasets. The quantitative and qualitative results show that our approach produces more realistic samples than other generative models. Furthermore, LiDARGen can sample point clouds conditioned on inputs without retraining. We demonstrate that our proposed generative model could be directly used to densify LiDAR point clouds.
+                </p>
+                <image src="img/method.png" class="img-responsive" alt="overview"><br>
+            </div>
+        </div>
+
+        <!-- Video -->
+        <!--
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Video
+                </h3>
+                <div class="text-center">
+                    <div style="position:relative;padding-top:56.25%;">
+                        <iframe src="https://www.youtube.com/embed/PV1dCTWL5Oo" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+      -->
+        
+
+		
+        <!-- Results -->
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Sample Generation Process from Different Angles
+                </h3> 
+				<!--
+                <p class="text-justify">
+                    The videos qualitatively compare NeurMips with <a href="https://github.com/creiser/kilonerf" target="_blank" rel="noopener noreferrer">KiloNeRF</a>.
+                </p>
+				-->                
+                <div class="col-md-4 text-center">
+                    <ul class="nav nav-pills nav-justified">
+                        <li>
+                            <image src="img/process/side.gif" width="400" />
+							<h4><strong>Side View</strong></h4>
+                        </li>
+						<li>
+                            <image src="img/process/bev.gif" width="400" />
+							<h4><strong>Bird's Eye View</strong></h4>
+                        </li>
+						<br/>
+						<li>
+                            <image src="img/process/range.gif" width="400" />
+							<h4><strong>Range Image</strong></h4>
+                        </li>
+						<li>
+                            <image src="img/process/intensity.gif" width="400" />
+							<h4><strong>Intensity Image</strong></h4>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+		<div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Unconditional Samples 
+                </h3>
+                <div class="text-center">
+					<image src="img/process/uncond.gif" width="800"/>
+                </div>
+            </div>
+        </div>
+		
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Related links
+                </h3>
+                <p class="text-justify">
+                    LiDARGen is implemented on top of the codebase of <a href="https://github.com/ermongroup/ncsnv2" target="_blank" rel="noopener noreferrer">NCSNv2</a>.
+                </p>
+               
+            </div>
+        </div>
+        
+            
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Citation
+                </h3>
+                <div class="form-group col-md-10 col-md-offset-1">
+                    <textarea id="bibtex" class="form-control" readonly>
+@InProceedings{zyrianov2022lidargen,
+author = {Zyrianov, Vlas and Zhu, Xiyue and Wang, Shenlong},
+title = {Learning to Generate Realistic LiDAR Point Clouds },
+booktitle = {Proceedings of the European Conference on Computer Vision (ECCV)},
+month = {October},
+year = {2022}
+}
+                    </textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Acknowledgements
+                </h3>
+                <p class="text-justify">
+We thank Wei-Chiu Ma and Zhijian Liu for their feedback on early drafts and all the participants in the human perceptual quality study. The project is partially funded by the Illinois Smart Transportation Initiative STII-21-07. We also thank Nvidia for the Academic Hardware Grant.
+
+
+                    <br>
+                    The website template was borrowed from <a href="http://mgharbi.com/" target="_blank" rel="noopener noreferrer">Michaël Gharbi</a> and <a href="https://zhihao-lin.github.io/neurmips/" target="_blank" rel="Noopener noreferrer">NeurMips</a>.
+                    <br>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
