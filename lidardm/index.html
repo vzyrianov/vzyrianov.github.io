@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="LidarDM: Generative LiDAR Simulation in a Generated World">
+    <meta name="keywords" content="generative model, diffusion model, lidar generation, self-driving, simulation">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LidarDM</title>
+
+
+    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+    <script type="text/javascript">google.load("jquery", "1.3.2");</script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/images/favicon.svg">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+    <section class="hero" style="padding-bottom:0px; margin-bottom:0px">
+        <div class="hero-body" style="padding-bottom:0px; margin-bottom:0px">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-1 publication-title"><span
+                                style="color: rgb(125, 0, 255);font-weight: bolder;">LidarDM</span>: Generative LiDAR
+                            Simulation in a Generated World</h1>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a href="https://www.zyrianov.org/">Vlas Zyrianov</a><sup>1</sup>,</span>
+                            <span class="author-block">
+                                <a href="https://www.linkedin.com/in/henry-che">Henry Che</a><sup>1</sup>,</span>
+                            <span class="author-block">
+                                <a href="https://zhijianliu.com/">Zhijian Liu</a><sup>2</sup>,</span>
+                            <span class="author-block">
+                                <a href="https://shenlong.web.illinois.edu/">Shenlong Wang</a><sup>1</sup>
+                            </span>
+                        </div>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>1</sup>University of Illinois Urbana-Champaign,</span>
+                            <span class="author-block"><sup>2</sup>MIT</span><br />
+                        </div>
+
+                        <!--
+                            <div class="is-size-5 publication-authors">
+                            <span class="author-block">Conference Name</span>
+                            </div>
+		                -->
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <!--<span class="link-block">
+                                    <a href="https://arxiv.org/"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </span>
+                                        <span>Paper</span>
+                                    </a>
+                                </span>
+                                <span class="link-block">
+                                    <a href="https://arxiv.org/"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="ai ai-arxiv"></i>
+                                        </span>
+                                        <span>arXiv</span>
+                                    </a>
+                                </span>
+								-->
+                                <!-- Code Link. -->
+                                <span class="link-block">
+                                    <a href="https://github.com/vzyrianov/lidardm"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                        <span>Code</span>
+                                    </a>
+                                </span>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+	<!--
+    <section class="section" style="margin-top: 0px; padding-top: 0px">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered " style="margin:0;padding:0;">
+                <pre style="margin:0;padding:0;"><code style="margin:0px; padding: 0px; font-size:x-small">@misc{lidardm,
+title={LidarDM: Generative LiDAR Simulation in a Generated World},
+author={Zyrianov, Vlas and Che, Henry and Liu, Zhijian and Wang, Shenlong},
+booktitle={X},
+year={2023}
+}</code></pre>
+            </div>
+        </div>
+    </section>
+	-->
+
+    <section class="hero teaser">
+        <div class="container is-max-desktop">
+            <div class="hero-body">
+                <img src="static/images/teaser.png" alt="teaser" width="100%" />
+                <h2 class="title is-5"><span style="color: rgb(125, 0, 255);font-weight: bolder;">LidarDM</span>
+                    generates a realistic sequence of LiDAR readings from scratch using Diffusion. </h2>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            We present <span style="color: rgb(125, 0, 255);font-weight: bolder;">LidarDM</span>,
+                            a novel LiDAR generation method capable of producing realistic, layout-aware,
+                            physically plausible, and temporally coherent LiDAR videos.
+                            <span style="color: rgb(125, 0, 255);font-weight: bolder;">LidarDM</span> stands out with
+                            two unprecedented capabilities in LiDAR generation: (i) LiDAR synthesis guided by
+                            driving scenarios, offering significant potential for autonomous driving simulations, and
+                            (ii) the
+                            synthesis of 4D LiDAR point clouds, enabling the creation of realistic and
+                            temporally coherent sequences. At the heart of our model is a novel integrated 4D world
+                            generation
+                            and sensor generation framework. Specifically, we employ latent diffusion models to generate
+                            the 3D scene, combine it with dynamic actors to form the underlying 4D world, and
+                            subsequently
+                            produce realistic sensory observations within this virtual environment. Our experiments
+                            indicate
+                            that our approach outperforms competing algorithms regarding realism, temporal coherency,
+                            and layout consistency.
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--/ Abstract. -->
+
+            <!-- Paper video.
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Video</h2>
+                    <div class="publication-video">
+                        <iframe src="" frameborder="0"
+                            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+             Paper video. -->
+        </div>
+    </section>
+
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">Consistent Video Generation</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            <span style="color: rgb(125, 0, 255);font-weight: bolder;">LidarDM</span>
+                            generates temporally consistent sequences of LiDAR Readings. 
+                        </p>
+
+                        <div class="columns is-centered">
+                            <div class="column has-text-justified is-one-third">
+                                <video id="main" autoplay controls muted loop playsinline width="100%">
+                                    <source src="static/videos/gen1.mp4" type="video/mp4" />
+                                </video>
+                            </div>
+                            <div class="column has-text-justified is-one-third">
+                                <video id="main" autoplay controls muted loop playsinline width="100%">
+                                    <source src="static/videos/gen2.mp4" type="video/mp4" />
+                                </video>
+                            </div>
+                            <div class="column has-text-justified is-one-third">
+                                <video id="main" autoplay controls muted loop playsinline width="100%">
+                                    <source src="static/videos/gen3.mp4" type="video/mp4" />
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">Long Sequence Generation</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            <span style="color: rgb(125, 0, 255);font-weight: bolder;">LidarDM</span>
+                            generates simulated LiDAR sensor readings for long traffic scenarios with only a BEV layout
+                            as input.
+                        </p>
+
+                        <div class="columns is-centered">
+                            <div class="column has-text-justified is-half">
+                                <video id="main" autoplay controls muted loop playsinline width="100%">
+                                    <source src="static/videos/long2.mp4" type="video/mp4" />
+                                </video>
+                            </div>
+                            <div class="column has-text-justified is-half">
+                                <video id="main" autoplay controls muted loop playsinline width="100%">
+                                    <source src="static/videos/long1.mp4" type="video/mp4" />
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">4-D Composition of Static and Dynamic Objects</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            <span style="color: rgb(125, 0, 255);font-weight: bolder;">LidarDM</span>
+                            works by factorizing the scenario into static and dynamic elements.
+                        </p>
+
+
+                        <div class="columns is-centered">
+                            <img src="static/images/lidardm_method.png" alt="comparison" width="100%" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">Conditional Diffusion-based Scene Modeling</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Powered by a conditional latent diffusion Model, <span style="color: rgb(125, 0, 255);font-weight: bolder;">LidarDM</span>
+                            generates novel LiDAR reading sequences that closely match a provided map layout. 
+                        </p>
+						
+                        <div class="columns is-centered">
+                            <img src="static/images/map_cond.png" alt="comparison" width="100%" />
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">Out-of-Distribution Scenario Composition</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            <span style="color: rgb(125, 0, 255);font-weight: bolder;">LidarDM</span>
+                            provides a flexible composition pipeline that allows self-driving autonomy evaluation in
+                            dangerous scenarios,
+                            such as animals escaping a zoo.
+                        </p>
+
+                        <div class="columns is-centered">
+                            <img src="static/images/rare_object.png" alt="teaser" width="100%" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">Competitive Single-Frame LiDAR Generation</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            <span style="color: rgb(125, 0, 255);font-weight: bolder;">LidarDM</span>
+                            can be run unconditionally to generate single-frame LiDAR readings (KITTI-360 samples shown
+                            below).
+                        </p>
+
+                        <div class="columns is-centered">
+                            <img src="static/images/comparison.png" alt="comparison" width="100%" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container">
+
+                <div class="columns is-centered">
+                    <div class="column is-8">
+                        <div class="content">
+                            <div class="columns is-centered">
+                                <p>
+                                    This website template is borrowed from <a
+                                        href="https://stevenlsw.github.io/contactgen/">ContactGen</a>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </footer>
+
+</body>
+
+</html>
