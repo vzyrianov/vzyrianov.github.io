@@ -41,9 +41,9 @@
                             Simulation in a Generated World</h1>
                         <div class="is-size-5 publication-authors">
                             <span class="author-block">
-                                <a href="https://www.zyrianov.org/">Vlas Zyrianov</a><sup>1</sup>,</span>
+                                <a href="https://www.zyrianov.org/">Vlas Zyrianov</a><sup>1*</sup>,</span>
                             <span class="author-block">
-                                <a href="https://www.linkedin.com/in/henry-che">Henry Che</a><sup>1</sup>,</span>
+                                <a href="https://hungdche.github.io/">Henry Che</a><sup>1*</sup>,</span>
                             <span class="author-block">
                                 <a href="https://zhijianliu.com/">Zhijian Liu</a><sup>2</sup>,</span>
                             <span class="author-block">
@@ -53,14 +53,18 @@
 
                         <div class="is-size-5 publication-authors">
                             <span class="author-block"><sup>1</sup>University of Illinois Urbana-Champaign,</span>
-                            <span class="author-block"><sup>2</sup>MIT</span><br />
+                            <span class="author-block"><sup>2</sup>NVIDIA</span><br />
                         </div>
 
-                        <!--
-                            <div class="is-size-5 publication-authors">
-                            <span class="author-block">Conference Name</span>
-                            </div>
-		                -->
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">* Equal Contribution</span>
+                        </div>
+
+                        
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">Accepted to ICRA 2025</span>
+                        </div>
+		                
                         <div class="column has-text-centered">
                             <div class="publication-links">
                                 <!--<span class="link-block">
@@ -109,8 +113,8 @@
         <div class="container is-max-desktop">
             <div class="hero-body">
                 <img src="static/images/teaser.png" alt="teaser" width="100%" />
-                <h2 class="title is-5"><span style="color: rgb(125, 0, 255);font-weight: bolder;">LidarDM</span>
-                    generates a realistic sequence of LiDAR readings from scratch using Diffusion. </h2>
+                <h2><span style="color: rgb(125, 0, 255);font-weight: bolder;">LidarDM</span>
+                  can generate LiDAR videos that are realistic, layout-conditioning, physically plausible, diverse, and temporally coherent, as shown by 2 diverse videos from one map condition.</h2>
             </div>
         </div>
     </section>
@@ -154,7 +158,49 @@ of our model is a novel integrated 4D world generation framework. Specifically, 
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
                 <div class="column">
-                    <h2 class="title is-3">Consistent Video Generation</h2>
+                    <h2 class="title is-3">Video Method</h2>
+                    <div class="content has-text-justified">
+                        <div class="columns is-centered">
+                            <div class="column has-text-justified">
+                                <video id="main" controls playsinline width="100%">
+                                    <source src="static/videos/method.mp4" type="video/mp4" />
+                                </video>
+                            </div>
+                        </div>
+                        <p class="columns is-centered">Play with sound.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+      <div class="container is-max-desktop">
+          <div class="columns is-centered has-text-centered">
+              <div class="column">
+                  <h2 class="title is-3">Competitive Single-Frame LiDAR Generation</h2>
+                  <div class="content has-text-justified">
+                      <p>
+                          <span style="color: rgb(125, 0, 255);font-weight: bolder;">LidarDM</span>
+                          can be run unconditionally to generate single-frame LiDAR readings (KITTI-360 samples shown
+                          below).
+                      </p>
+
+                      <div class="columns is-centered">
+                          <img src="static/images/comparison.png" alt="comparison" width="100%" />
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">Consistent Multi-Frame LiDAR Generation</h2>
+                    <h2 class="title is-4">Short Sequence Generation</h2>
                     <div class="content has-text-justified">
                         <p>
                             <span style="color: rgb(125, 0, 255);font-weight: bolder;">LidarDM</span>
@@ -162,21 +208,21 @@ of our model is a novel integrated 4D world generation framework. Specifically, 
                         </p>
 
                         <div class="columns is-centered">
-                            <div class="column has-text-justified is-one-third">
+                            <div class="column has-text-justified is-half">
                                 <video id="main" autoplay controls muted loop playsinline width="100%">
                                     <source src="static/videos/gen1.mp4" type="video/mp4" />
                                 </video>
                             </div>
-                            <div class="column has-text-justified is-one-third">
+                            <div class="column has-text-justified is-half">
                                 <video id="main" autoplay controls muted loop playsinline width="100%">
                                     <source src="static/videos/gen2.mp4" type="video/mp4" />
                                 </video>
                             </div>
-                            <div class="column has-text-justified is-one-third">
+                            <!-- <div class="column has-text-justified is-one-third">
                                 <video id="main" autoplay controls muted loop playsinline width="100%">
                                     <source src="static/videos/gen3.mp4" type="video/mp4" />
                                 </video>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -189,12 +235,11 @@ of our model is a novel integrated 4D world generation framework. Specifically, 
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
                 <div class="column">
-                    <h2 class="title is-3">Long Sequence Generation</h2>
+                    <h2 class="title is-4">Long Sequence Generation</h2>
                     <div class="content has-text-justified">
                         <p>
                             <span style="color: rgb(125, 0, 255);font-weight: bolder;">LidarDM</span>
-                            generates simulated LiDAR sensor readings for long traffic scenarios with only a BEV layout
-                            as input.
+                            generates simulated LiDAR sensor readings for long traffic scenarios.
                         </p>
 
                         <div class="columns is-centered">
@@ -219,6 +264,40 @@ of our model is a novel integrated 4D world generation framework. Specifically, 
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
                 <div class="column">
+                    <h2 class="title is-4">(Bonus) Visualizations of Agent Motions</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            <span style="color: rgb(125, 0, 255);font-weight: bolder;">LidarDM</span>
+                            uses <a href="https://www.mixamo.com/">Mixamo</a> to animate pedestrian motions for realistic human walking motions.  
+                        </p>
+
+                        <div class="columns is-centered">
+                            <video id="main" autoplay controls muted loop playsinline width="100%">
+                                <source src="static/videos/ped.mp4" type="video/mp4" />
+                            </video>
+                        </div>
+
+                        <div class="columns is-centered">
+                          <div class="column has-text-justified is-one-third">
+                              <p class="columns is-centered">Aligned Map-LiDAR</p>
+                          </div>
+                          <div class="column has-text-justified is-one-third">
+                              <p class="columns is-centered">Visualized agent meshes</p>
+                          </div>
+                          <div class="column has-text-justified is-one-third">
+                              <p class="columns is-centered">Corresponding point cloud</p>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
                     <h2 class="title is-3">4-D Composition of Static and Dynamic Objects</h2>
                     <div class="content has-text-justified">
                         <p>
@@ -234,9 +313,9 @@ of our model is a novel integrated 4D world generation framework. Specifically, 
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <section class="section">
+    <!-- <section class="section">
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
                 <div class="column">
@@ -256,24 +335,87 @@ of our model is a novel integrated 4D world generation framework. Specifically, 
                 </div>
             </div>
         </div>
+    </section> -->
+
+
+    <section class="section">
+      <div class="container is-max-desktop">
+          <div class="columns is-centered has-text-centered">
+              <div class="column">
+                  <h2 class="title is-3">Applications</h2>
+                  <h3 class="title is-4">End-to-end Traffic Simulation</h3>
+                  <div class="content has-text-justified">
+                      <p>
+                          <span style="color: rgb(125, 0, 255);font-weight: bolder;">LidarDM</span>
+                          can extend traffic simulators to provide a platform for end-to-end autonomous driving evaluation and training.
+                      </p>
+
+                      <div class="content has-text-justified">
+                          <div class="columns is-centered">
+                              <div class="column has-text-justified">
+                                  <video id="main" autoplay controls muted loop playsinline width="100%">
+                                      <source src="static/videos/final_sim.mp4" type="video/mp4" />
+                                  </video>
+                              </div>
+                          </div>
+                          <p class="columns is-centered">Ego-vehicle Trajectory Manipulation.</p>
+                          <div class="columns is-centered">
+                            <div class="column has-text-justified">
+                                <video id="main" autoplay controls muted loop playsinline width="100%">
+                                    <source src="static/videos/actor.mp4" type="video/mp4" />
+                                </video>
+                            </div>
+                        </div>
+                        <p class="columns is-centered">Agent Trajectory Manipulation.</p>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
+    <section class="section">
+      <div class="container is-max-desktop">
+          <div class="columns is-centered has-text-centered">
+              <div class="column">
+                  <h3 class="title is-4">Out-of-Distribution Scene Generation</h3>
+                  <div class="content has-text-justified">
+                        <p>
+                            <span style="color: rgb(125, 0, 255);font-weight: bolder;">LidarDM</span>
+                            is capable of generating scenarios with just a course layout, such as the hand-drawn that of <a href="https://en.wikipedia.org/wiki/Champs-%C3%89lys%C3%A9es">Champs-Élysées</a>, which are not in the training set.
+                        </p>
+
+                        <div class="columns is-centered">
+                            <img src="static/images/champ.png" alt="animal mesh" width="100%" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="section">
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
                 <div class="column">
-                    <h2 class="title is-3">Out-of-Distribution Scenario Composition</h2>
+                    <h3 class="title is-4">Out-of-Distribution Scenario Composition</h3>
                     <div class="content has-text-justified">
                         <p>
                             <span style="color: rgb(125, 0, 255);font-weight: bolder;">LidarDM</span>
                             provides a flexible composition pipeline that allows self-driving autonomy evaluation in
                             dangerous scenarios,
-                            such as animals escaping a zoo.
+                            such as animals escaping a zoo. 
                         </p>
 
                         <div class="columns is-centered">
-                            <img src="static/images/rare_object.png" alt="teaser" width="100%" />
+                          <div class="column has-text-justified is-half">
+                            <img src="static/images/animal_mesh.png" alt="animal mesh" width="100%"/>
+                            <p class="columns is-centered">Inserted animal mesh</p>
+                          </div>
+                          <div class="column has-text-justified is-half">
+                            <img src="static/images/animal_lidar.png" alt="animal lidar" width="100%"/>
+                            <p class="columns is-centered">Corresponding LiDAR data</p>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -281,48 +423,20 @@ of our model is a novel integrated 4D world generation framework. Specifically, 
         </div>
     </section>
 
-
-    <section class="section">
-        <div class="container is-max-desktop">
-            <div class="columns is-centered has-text-centered">
-                <div class="column">
-                    <h2 class="title is-3">Competitive Single-Frame LiDAR Generation</h2>
-                    <div class="content has-text-justified">
-                        <p>
-                            <span style="color: rgb(125, 0, 255);font-weight: bolder;">LidarDM</span>
-                            can be run unconditionally to generate single-frame LiDAR readings (KITTI-360 samples shown
-                            below).
-                        </p>
-
-                        <div class="columns is-centered">
-                            <img src="static/images/comparison.png" alt="comparison" width="100%" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-	
-	
-	
-    <section class="section" style="margin-top: 0px; padding-top: 0px;">
-        <div class="container">
-			<div class="column is-centered has-text-centered">
-                    <h2 class="title is-3">Citation</h2>
-			</div>
-            <div class="columns is-centered " style="margin:0;padding:0; ">
-                <pre style="margin:0;padding:0;"><code style="margin:0px; padding: 0px; font-size:x-small; ">@misc{lidardm,
+    <section class="section" id="BibTeX">
+      <div class="container is-max-desktop content">
+        <h2 class="title is-3" style="text-align: center;">BibTeX</h2>
+        <pre><code>@misc{lidardm,
       title={LidarDM: Generative LiDAR Simulation in a Generated World}, 
       author={Vlas Zyrianov and Henry Che and Zhijian Liu and Shenlong Wang},
       year={2024},
       eprint={2404.02903},
       archivePrefix={arXiv},
       primaryClass={cs.CV}
-}</code></pre>
-            </div>
-        </div>
+    }
+    </code></pre>
+      </div>
     </section>
-
 
     <footer class="footer">
         <div class="container">
